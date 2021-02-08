@@ -1,9 +1,15 @@
+// Dependencies
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config')
+
+// Routes
+const activitiesRouter = require('./routes/activities-router');
+const mealsRouter = require('./routes/meals-router');
+const dessertsRouter = require('./routes/desserts-router');
 
 const app = express();
 
@@ -18,6 +24,10 @@ app.use(cors());
 app.get('/api', (req, res) => {
   res.send('Hello, Date Ideas!');
 });
+
+app.use('/api/activites', activitiesRouter);
+app.use('/api/meals', mealsRouter);
+app.use('/api/desserts', dessertsRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response

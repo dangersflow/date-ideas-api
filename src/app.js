@@ -25,7 +25,7 @@ app.get('/api', (req, res) => {
   res.send('Hello, Date Ideas!');
 });
 
-app.use('/api/activites', activitiesRouter);
+app.use('/api/activities', activitiesRouter);
 app.use('/api/meals', mealsRouter);
 app.use('/api/desserts', dessertsRouter);
 

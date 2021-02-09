@@ -4,7 +4,7 @@ const mealsService = {
   getMeal(db) {
     return db.
       raw(`
-        select name 
+        select name, id
         from meals 
         offset floor(random() * (
           select count(*) from meals) 

@@ -4,7 +4,7 @@ const activitiesService = {
   getActivity(db) {
     return db.
       raw(`
-        select name 
+        select name, id 
         from activities 
         offset floor(random() * (
           select count(*) from activities) 

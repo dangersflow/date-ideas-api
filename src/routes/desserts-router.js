@@ -13,10 +13,16 @@ const dessertsService = require('./../services/desserts-service');
 dessertsRouter
   .route('/')
   .get((req, res, next) => {
-    dessertsService.getDessert(req.app.get('db'))
+    dessertsService.getLoggedOutDessert(req.app.get('db'))
       .then(returned => {
         res.json(returned.rows[0]);
       })
+  }).post(jsonBodyParser, (req, res, next) => {
+    dessertsService.getLoggedInDessert(req.app.get('db'), req.body.userId)
+      .then(response => {
+        res.json(response.rows[0]);
+      })
+    ;
   })
 
 module.exports = dessertsRouter;

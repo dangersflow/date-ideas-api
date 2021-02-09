@@ -13,10 +13,16 @@ const mealsService = require('./../services/meals-service');
 mealsRouter
   .route('/')
   .get((req, res, next) => {
-    mealsService.getMeal(req.app.get('db'))
+    mealsService.getLoggedOutMeal(req.app.get('db'))
       .then(returned => {
         res.json(returned.rows[0]);
       })
+  }).post(jsonBodyParser, (req, res, next) => {
+    mealsService.getLoggedInMeal(req.app.get('db'), req.body.userId)
+      .then(response => {
+        res.json(response.rows[0]);
+      })
+    ;
   })
 
 module.exports = mealsRouter;

@@ -18,6 +18,7 @@ mealsRouter
       .then(returned => {
         res.json(returned.rows[0]);
       })
+      .catch(next)
   }).post(jsonBodyParser, (req, res, next) => {
     excludedService.deleteExcludedYear(req.app.get('db'), req.body.userId)
       .then(() => {
@@ -27,6 +28,7 @@ mealsRouter
           })
         ;
       })
+      .catch(next)
     ;
   })
 

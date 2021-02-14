@@ -18,6 +18,7 @@ activitiesRouter
       .then(returned => {
         res.json(returned.rows[0]);
       })
+      .catch(next)
   }).post(jsonBodyParser, (req, res, next) => {
     excludedService.deleteExcludedYear(req.app.get('db'), req.body.userId)
       .then(() => {
@@ -25,7 +26,7 @@ activitiesRouter
         .then(response => {
           res.json(response.rows[0]);
         })
-      })
+      }).catch(next)
     ;
   })
 

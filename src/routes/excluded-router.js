@@ -32,6 +32,7 @@ excludedRouter
         }
         
       })
+      .catch(next)
     ;
   })
 

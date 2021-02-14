@@ -10,6 +10,7 @@ const { NODE_ENV } = require('./config')
 const activitiesRouter = require('./routes/activities-router');
 const mealsRouter = require('./routes/meals-router');
 const dessertsRouter = require('./routes/desserts-router');
+const excludedRouter = require('./routes/excluded-router');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.get('/api', (req, res) => {
 app.use('/api/activities', activitiesRouter);
 app.use('/api/meals', mealsRouter);
 app.use('/api/desserts', dessertsRouter);
+app.use('/api/excluded', excludedRouter)
 
 app.use(function errorHandler(error, req, res, next) {
   let response

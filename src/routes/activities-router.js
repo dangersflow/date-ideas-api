@@ -9,6 +9,7 @@ const jsonBodyParser = express.json()
 
 // Services
 const activitiesService = require('./../services/activities-service');
+const excludedService = require('./../services/excluded-service');
 
 activitiesRouter
   .route('/')
@@ -18,9 +19,12 @@ activitiesRouter
         res.json(returned.rows[0]);
       })
   }).post(jsonBodyParser, (req, res, next) => {
-    activitiesService.getLoggedInActivity(req.app.get('db'), req.body.userId)
-      .then(response => {
-        res.json(response.rows[0]);
+    excludedService.deleteExcludedYear(req.app.get('db'), req.body.userId)
+      .then(() => {
+        activitiesService.getLoggedInActivity(req.app.get('db'), req.body.userId)
+        .then(response => {
+          res.json(response.rows[0]);
+        })
       })
     ;
   })

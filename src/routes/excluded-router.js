@@ -25,7 +25,10 @@ excludedRouter
             })
         } else {
           console.log(response.rows);
-          // res.json(response.rows[0]);
+          excludedService.deleteExcludedId(req.app.get('db'), response.rows[0].id)
+            .then(() => {
+              console.log('done with that too');
+            });
         }
         
       })

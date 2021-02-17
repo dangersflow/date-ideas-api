@@ -34,7 +34,6 @@ app.use('/api/excluded', excludedRouter)
 app.use(function errorHandler(error, req, res, next) {
   let response
   if (NODE_ENV === 'production') {
-    console.error(error)
     response = { error: { message: 'server error' } }
   } else {
     console.error(error)

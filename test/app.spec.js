@@ -54,6 +54,7 @@ describe('Activities Endpoints', () => {
         return supertest(app)
           .get('/api/activities')
           .expect(res => {
+            expect(res.status).to.equal(200);
             expect(res.body.name).to.equal('test activity');
           })
         ;
@@ -88,6 +89,7 @@ describe('Activities Endpoints', () => {
           .post('/api/activities')
           .send({userId: 1})
           .expect(res => {
+            expect(res.status).to.equal(200);
             expect(res.body.name).to.equal('test activity 2');
             expect(res.body.id).to.equal(2);
           })
@@ -137,6 +139,7 @@ describe('Meals Endpoints', () => {
         return supertest(app)
           .get('/api/meals')
           .expect(res => {
+            expect(res.status).to.equal(200);
             expect(res.body.name).to.equal('test meal');
           })
         ;
@@ -171,6 +174,7 @@ describe('Meals Endpoints', () => {
           .post('/api/meals')
           .send({userId: 1})
           .expect(res => {
+            expect(res.status).to.equal(200);
             expect(res.body.name).to.equal('test meal 2');
             expect(res.body.id).to.equal(2);
           })
@@ -220,6 +224,7 @@ describe('Desserts Endpoints', () => {
         return supertest(app)
           .get('/api/desserts')
           .expect(res => {
+            expect(res.status).to.equal(200);
             expect(res.body.name).to.equal('test dessert');
           })
         ;
@@ -253,6 +258,7 @@ describe('Desserts Endpoints', () => {
           .post('/api/desserts')
           .send({userId: 1})
           .expect(res => {
+            expect(res.status).to.equal(200);
             expect(res.body.name).to.equal('test dessert 2');
             expect(res.body.id).to.equal(2);
           })

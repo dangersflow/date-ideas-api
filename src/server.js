@@ -5,13 +5,19 @@ const knex = require('knex');
 const app = require('./app');
 
 // Config Files
-const { PORT, DATABASE_URL } = require('./config');
+const { PORT, HOST, USER, PASSWORD, DATABASE, DB_PORT } = require('./config');
 
 // Assign knex instance to db
 const db = knex({
   client: 'pg',
-  connection: DATABASE_URL,
-})
+  connection: {
+    host: HOST,
+    port: DB_PORT,
+    user: USER,
+    password: PASSWORD,
+    database: DATABASE,
+  },
+});
 
 // Connect the db instance to app.js to use with express
 app.set('db', db);

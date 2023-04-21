@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  api:
+    container_name: api
+    image: date-ideas
+    build: .
+    networks:
+      date-ideas-backend:
+        ipv4_address: 172.16.238.12
+    ports:
+      - 3000:3000
+    # volumes:
+    #   - ../api:/app
+    depends_on:
+      - db
+    links:
+      - db
+
+  db:
+    container_name: db
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    # volumes:
+    #   - ./pgData:/var/lib/postgresql/data
+    restart: unless-stopped
+    tty: true
+    networks:
+      date-ideas-backend:
+        ipv4_address: 172.16.238.13
+
+networks:
+  date-ideas-backend:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
+          gateway: 172.16.238.1

@@ -3,21 +3,21 @@
     "username": "joe",
     "password": "password",
     "database": "date-ideas",
-    "host": "127.0.0.1",
+    "host": "api",
     "dialect": "postgres"
   },
   "test": {
     "username": "joe",
     "password": null,
     "database": "date-ideas-test",
-    "host": "127.0.0.1",
+    "host": "api",
     "dialect": "postgres"
   },
   "production": {
     "username": "joe",
     "password": null,
     "database": "date-ideas-prod",
-    "host": "127.0.0.1",
+    "host": "api",
     "dialect": "postgres"
   }
 }

@@ -1,15 +1,16 @@
 // Dependencies
-const knex = require('knex');
+const knex = require("knex");
 
 // Express instance
-const app = require('./app');
+const app = require("./app");
 
 // Config Files
-const { PORT, HOST, USER, PASSWORD, DATABASE, DB_PORT } = require('./config');
+const { PORT, HOST, USER, PASSWORD, DATABASE, DB_PORT } = require("./config");
+console.log("PORT: " + PORT, "\n" + "HOST" + HOST);
 
 // Assign knex instance to db
 const db = knex({
-  client: 'pg',
+  client: "pg",
   connection: {
     host: HOST,
     port: DB_PORT,
@@ -20,7 +21,7 @@ const db = knex({
 });
 
 // Connect the db instance to app.js to use with express
-app.set('db', db);
+app.set("db", db);
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);

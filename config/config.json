@@ -8,14 +8,14 @@
   },
   "test": {
     "username": "joe",
-    "password": null,
+    "password": "password",
     "database": "date-ideas-test",
     "host": "172.16.238.13",
     "dialect": "postgres"
   },
   "production": {
     "username": "joe",
-    "password": null,
+    "password": "password",
     "database": "date-ideas-prod",
     "host": "172.16.238.13",
     "dialect": "postgres"

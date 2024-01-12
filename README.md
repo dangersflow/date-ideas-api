@@ -110,8 +110,8 @@ Endpoint: /api/excluded
 
 1. Clone project locally
 2. Set up .env (use example.env for reference)
-3. `docker-compose up -d`
-4. In the "api" docker container, enter the integrated terminal and run `npx sequelize-cli db:migrate; npx sequelize-cli db:seed:all`
+3. `docker-compose down && docker-compose build --no-cache && docker-compose up -d`
+4. In the "api" docker container, enter the integrated terminal by running `docker ps (for seeing current containers) then: docker exec -it [CONTAINER ID] /bin/sh` and run `npx sequelize-cli db:migrate; npx sequelize-cli db:seed:all` inside of the container
 
 ### Troubleshooting
 
